@@ -13,3 +13,5 @@ Let's say we are in a folder with a project. For installing [**RaveGL**](https:/
 For deleting:
 
     ravepm delete Ttimofeyka/RaveGL
+
+Don't forget to add the folder with **RavePM** to the PATH.
