@@ -6,12 +6,16 @@
 This program only needs a [**Rave**](https://github.com/Ttimofeyka/Rave) compiler and **git**.
 
 ## Testing
-Let's say we are in a folder with a project. For installing [**RaveGL**](https://github.com/Ttimofeyka/RaveGL) you can use this command:
+Let's say we are in a folder with a project. For installing [**RaveRaylib**](https://github.com/Ttimofeyka/RaveRaylib) you can use this command:
 
-    ravepm install Ttimofeyka/RaveGL
+```
+ravepm install RaveRaylib
+```
 
-For deleting:
+Or this:
 
-    ravepm delete Ttimofeyka/RaveGL
+```
+ravepm install https://github.com/Ttimofeyka/RaveRaylib
+```
 
-Don't forget to add the folder with **RavePM** to the PATH.
+This repository contains a list of approved aliases to github repositories that allow you to install packages without specifying github.

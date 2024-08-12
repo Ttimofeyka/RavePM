@@ -1,0 +1,60 @@
+import <std/io> <std/system> <std/vector> <std/ascii>
+
+void main(int argc, char** argv) {
+    if(argc < 2) {
+        std::println("List of a possible arguments:\n\tinstall pkg/repo - install the Rave library from GitHub repository.\nAll examples provided at https://github.com/Ttimofeyka/RavePM.");
+        std::exit(0);
+    }
+
+    if(argc < 3) {
+        std::println("The count of arguments must be at least two!");
+        std::exit(1);
+    }
+
+    std::string buffer = "git clone ";
+    std::string cmd = argv[1];
+
+    defer ~buffer;
+    defer ~cmd;
+
+    if(cmd == "install") {
+        std::string aliasOrGit = std::string(argv[2]);
+        defer ~aliasOrGit;
+        
+        if(aliasOrGit.indexOf("github.com") == -1) {
+            std::file aliases = std::file("aliases");
+            aliases.open("r");
+
+            std::string line = aliases.readLine();
+            defer ~line;
+
+            while(line != "") {
+                std::vector<std::string> parts = line.split(' ');
+                if(parts[0] == aliasOrGit) {
+                    ~aliasOrGit;
+                    aliasOrGit = parts[1];
+                    break;
+                }
+                ~line;
+                line = aliases.readLine();
+            }
+
+            if(aliasOrGit.indexOf("github.com") == -1) {
+                std::println("Undefined GitHub repository or alias '", argv[2], "'!");
+                std::exit(1);
+            }
+        }
+
+        buffer.append(aliasOrGit);
+
+        if(std::system(buffer.c()) != 0) {
+            std::println("Something wrong using '", buffer, "'!");
+            std::exit(1);
+        }
+        else std::println("Done!");
+    }
+    else {
+        std::println("Undefined argument '", argv[1], "'!");
+        std::exit(1);
+    }
+}
