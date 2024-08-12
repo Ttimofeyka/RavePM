@@ -2,6 +2,8 @@
 
 **RavePM** (Rave Package Manager) is a program that allows you to easily install libraries created using Rave.
 
+This utility is very simple, and rather serves as a filter against unwanted packages.
+
 ## Dependencies
 This program only needs a [**Rave**](https://github.com/Ttimofeyka/Rave) compiler and **git**.
 
