@@ -12,12 +12,10 @@ void main(int argc, char** argv) {
     }
 
     std::string buffer = "git clone ";
-    std::string cmd = argv[1];
 
     defer ~buffer;
-    defer ~cmd;
 
-    if(cmd == "install") {
+    if(std::cstring::strcmp(argv[1], "install")) {
         std::string aliasOrGit = std::string(argv[2]);
         defer ~aliasOrGit;
         
